@@ -1,0 +1,1 @@
+// Simulação de servidor Node.js
