@@ -1,0 +1,12 @@
+{
+  "name": "aposta-maxima",
+  "version": "1.0.0",
+  "description": "Sistema de apostas esportivas",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
