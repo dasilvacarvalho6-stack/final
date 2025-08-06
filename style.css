@@ -1,1 +1,176 @@
-body { background-color: black; color: red; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+}
+
+header {
+  background-color: #c00;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  background-color: #111;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  color: #f00;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.sidebar ul li {
+  padding: 8px 0;
+  cursor: pointer;
+  color: #ccc;
+}
+
+.sidebar ul li:hover {
+  color: #fff;
+}
+
+/* Main */
+main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.jogos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.jogo {
+  background-color: #222;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.jogo h3 {
+  color: #f00;
+  margin-bottom: 10px;
+}
+
+.odds {
+  display: flex;
+  gap: 10px;
+}
+
+.odd {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.odd:hover {
+  background-color: #f00;
+}
+
+.odd.selected {
+  background-color: #c00;
+}
+
+/* Boletim */
+.boletim {
+  width: 300px;
+  background-color: #111;
+  padding: 20px;
+  border-left: 2px solid #c00;
+}
+
+.boletim h2 {
+  margin-bottom: 15px;
+  color: #f00;
+}
+
+.input-group {
+  margin: 15px 0;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  background: #222;
+  color: #fff;
+}
+
+.boletim button {
+  background-color: #c00;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.boletim button:hover {
+  background-color: #f00;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background-color: #222;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff;
+}
+
+.modal-content button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 15px;
+  border: none;
+  background-color: #c00;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #f00;
+}
