@@ -7,7 +7,7 @@ async function carregarJogos() {
 }
 
 function mostrarJogos(jogos) {
-  const container = document.getElementById('jogos-container');
+  const container = document.getElementById('jogos');
   container.innerHTML = '';
   jogos.forEach(jogo => {
     const div = document.createElement('div');
