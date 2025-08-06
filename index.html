@@ -1,1 +1,75 @@
-<!DOCTYPE html><html><head><title>Aposta Máxima</title></head><body>Frontend funcionando</body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aposta Máxima</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Aposta Máxima</h1>
+  </header>
+
+  <div class="container">
+    <!-- Menu lateral -->
+    <aside class="sidebar">
+      <h2>Dias da Semana</h2>
+      <ul>
+        <li>Hoje</li>
+        <li>Amanhã</li>
+        <li>Quarta</li>
+        <li>Quinta</li>
+        <li>Sexta</li>
+        <li>Sábado</li>
+        <li>Domingo</li>
+      </ul>
+
+      <h2>Ligas</h2>
+      <ul>
+        <li>Brasileirão</li>
+        <li>Champions League</li>
+        <li>Premier League</li>
+        <li>Libertadores</li>
+      </ul>
+    </aside>
+
+    <!-- Conteúdo principal -->
+    <main>
+      <section class="jogos" id="jogos">
+        <!-- Jogos serão carregados aqui por script.js -->
+      </section>
+    </main>
+
+    <!-- Boletim -->
+    <aside class="boletim" id="boletim">
+      <h2>Boletim de Aposta</h2>
+      <div id="apostasSelecionadas"></div>
+
+      <div class="input-group">
+        <label for="valorAposta">Valor da aposta (R$):</label>
+        <input type="number" id="valorAposta" placeholder="0.00">
+      </div>
+
+      <div>
+        <p>Total de odds: <span id="totalOdds">0.00</span></p>
+        <p>Retorno potencial: <span id="retorno">R$ 0.00</span></p>
+      </div>
+
+      <button onclick="finalizarAposta()">Finalizar Aposta</button>
+    </aside>
+  </div>
+
+  <!-- Modal de pagamento -->
+  <div id="modalPagamento" class="modal">
+    <div class="modal-content">
+      <h3>Escolha a forma de pagamento</h3>
+      <button onclick="pagarPix()">💳 Pagar via Pix</button>
+      <button onclick="gerarCodigo()">💵 Gerar código para pagamento manual</button>
+      <button onclick="fecharModal()">Cancelar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
