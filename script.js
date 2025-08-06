@@ -1,58 +1,103 @@
-let selecoes = [];
+let apostas = [];
 
-async function carregarJogos() {
-  const res = await fetch('api_jogos.json');
-  const jogos = await res.json();
-  mostrarJogos(jogos);
-}
+fetch("api_jogos.json")
+  .then((res) => res.json())
+  .then((data) => {
+    const container = document.getElementById("jogos");
 
-function mostrarJogos(jogos) {
-  const container = document.getElementById('jogos');
-  container.innerHTML = '';
-  jogos.forEach(jogo => {
-    const div = document.createElement('div');
-    div.innerHTML = `
-      <h3>${jogo.timeA} x ${jogo.timeB}</h3>
-      <button onclick="selecionarOdd('${jogo.timeA}', ${jogo.odds[0]})">${jogo.odds[0]}</button>
-      <button onclick="selecionarOdd('Empate', ${jogo.odds[1]})">${jogo.odds[1]}</button>
-      <button onclick="selecionarOdd('${jogo.timeB}', ${jogo.odds[2]})">${jogo.odds[2]}</button>
-    `;
-    container.appendChild(div);
+    data.forEach((jogo) => {
+      const jogoDiv = document.createElement("div");
+      jogoDiv.className = "jogo";
+
+      const title = document.createElement("h3");
+      title.innerText = `${jogo.timeA} vs ${jogo.timeB}`;
+      jogoDiv.appendChild(title);
+
+      const oddsContainer = document.createElement("div");
+      oddsContainer.className = "odds";
+
+      jogo.odds.forEach((odd, index) => {
+        const oddBtn = document.createElement("div");
+        oddBtn.className = "odd";
+        oddBtn.innerText = `${odd.nome} - ${odd.valor}`;
+        oddBtn.dataset.odd = odd.valor;
+        oddBtn.dataset.jogo = `${jogo.timeA} vs ${jogo.timeB}`;
+        oddBtn.dataset.tipo = odd.nome;
+
+        oddBtn.addEventListener("click", () => {
+          oddBtn.classList.toggle("selected");
+          const selected = oddBtn.classList.contains("selected");
+
+          if (selected) {
+            apostas.push({
+              jogo: oddBtn.dataset.jogo,
+              tipo: oddBtn.dataset.tipo,
+              odd: parseFloat(oddBtn.dataset.odd),
+            });
+          } else {
+            apostas = apostas.filter(
+              (aposta) =>
+                !(
+                  aposta.jogo === oddBtn.dataset.jogo &&
+                  aposta.tipo === oddBtn.dataset.tipo
+                )
+            );
+          }
+
+          atualizarBoletim();
+        });
+
+        oddsContainer.appendChild(oddBtn);
+      });
+
+      jogoDiv.appendChild(oddsContainer);
+      container.appendChild(jogoDiv);
+    });
   });
-}
-
-function selecionarOdd(time, odd) {
-  selecoes.push({ time, odd });
-  atualizarBoletim();
-}
 
 function atualizarBoletim() {
-  const ul = document.getElementById('selecoes');
-  ul.innerHTML = '';
-  selecoes.forEach(sel => {
-    const li = document.createElement('li');
-    li.textContent = `${sel.time} @ ${sel.odd}`;
-    ul.appendChild(li);
+  const apostasDiv = document.getElementById("apostasSelecionadas");
+  const totalOdds = document.getElementById("totalOdds");
+  const retorno = document.getElementById("retorno");
+  const valorInput = document.getElementById("valorAposta");
+
+  apostasDiv.innerHTML = "";
+
+  apostas.forEach((aposta) => {
+    const div = document.createElement("div");
+    div.innerText = `${aposta.jogo} - ${aposta.tipo} @ ${aposta.odd}`;
+    apostasDiv.appendChild(div);
   });
-  atualizarRetorno();
+
+  const total = apostas.reduce((acc, a) => acc * a.odd, 1);
+  totalOdds.innerText = total.toFixed(2);
+
+  const valor = parseFloat(valorInput.value) || 0;
+  retorno.innerText = `R$ ${(valor * total).toFixed(2)}`;
 }
 
-function atualizarRetorno() {
-  const valor = parseFloat(document.getElementById('valorAposta').value) || 0;
-  const totalOdd = selecoes.reduce((acc, sel) => acc * sel.odd, 1);
-  document.getElementById('retornoPotencial').textContent = (valor * totalOdd).toFixed(2);
-}
+document.getElementById("valorAposta").addEventListener("input", atualizarBoletim);
 
 function finalizarAposta() {
-  alert('Aposta finalizada com sucesso! Escolha o método de pagamento.');
+  if (apostas.length === 0) {
+    alert("Selecione ao menos uma odd!");
+    return;
+  }
+
+  document.getElementById("modalPagamento").style.display = "flex";
 }
 
-function filtrarDia(dia) {
-  console.log("Filtrar por dia:", dia);
+function fecharModal() {
+  document.getElementById("modalPagamento").style.display = "none";
 }
 
-function filtrarEsporte(esporte) {
-  console.log("Filtrar por esporte:", esporte);
+function pagarPix() {
+  alert("Pagamento via Pix gerado (simulação).");
+  fecharModal();
 }
 
-carregarJogos();
+function gerarCodigo() {
+  const codigo = Math.floor(Math.random() * 1000000);
+  alert(`Código para pagamento manual: #${codigo}`);
+  fecharModal();
+}
