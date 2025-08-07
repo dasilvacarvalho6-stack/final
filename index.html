@@ -1,87 +1,65 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aposta Máxima</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <h1>Aposta Máxima</h1>
   </header>
-<div class="filtros">
-  <label for="filtroData">Filtrar por data:</label>
-  <input type="date" id="filtroData" />
 
-  <label for="filtroLiga">Filtrar por liga:</label>
-  <select id="filtroLiga">
-    <option value="">Todas</option>
-    <option value="Campeonato Brasileiro">Campeonato Brasileiro</option>
-    <option value="Premier League">Premier League</option>
-    <option value="La Liga">La Liga</option>
-    <option value="Serie A">Serie A</option>
-  </select>
-</div>
+  <section class="filtros">
+    <label for="filtroData">Filtrar por data:</label>
+    <input type="date" id="filtroData">
 
-  <div class="container">
-    <!-- Menu lateral -->
+    <label for="filtroLiga">Filtrar por liga:</label>
+    <select id="filtroLiga">
+      <option value="">Todas as Ligas</option>
+      <option value="Brasileirão">Brasileirão</option>
+      <option value="Champions League">Champions League</option>
+      <option value="Premier League">Premier League</option>
+      <option value="La Liga">La Liga</option>
+      <option value="Libertadores">Libertadores</option>
+    </select>
+  </section>
+
+  <main>
     <aside class="sidebar">
       <h2>Dias da Semana</h2>
       <ul>
-        <li>Hoje</li>
-        <li>Amanhã</li>
-        <li>Quarta</li>
-        <li>Quinta</li>
-        <li>Sexta</li>
-        <li>Sábado</li>
-        <li>Domingo</li>
+        <li onclick="filtrarPorDia('Hoje')">Hoje</li>
+        <li onclick="filtrarPorDia('Amanhã')">Amanhã</li>
+        <li onclick="filtrarPorDia('Quarta')">Quarta</li>
+        <li onclick="filtrarPorDia('Quinta')">Quinta</li>
+        <li onclick="filtrarPorDia('Sexta')">Sexta</li>
+        <li onclick="filtrarPorDia('Sábado')">Sábado</li>
+        <li onclick="filtrarPorDia('Domingo')">Domingo</li>
       </ul>
 
       <h2>Ligas</h2>
       <ul>
-        <li>Brasileirão</li>
-        <li>Champions League</li>
-        <li>Premier League</li>
-        <li>Libertadores</li>
+        <li onclick="filtrarPorLiga('Brasileirão')">Brasileirão</li>
+        <li onclick="filtrarPorLiga('Champions League')">Champions League</li>
+        <li onclick="filtrarPorLiga('Premier League')">Premier League</li>
+        <li onclick="filtrarPorLiga('La Liga')">La Liga</li>
+        <li onclick="filtrarPorLiga('Libertadores')">Libertadores</li>
       </ul>
     </aside>
 
-    <!-- Conteúdo principal -->
-    <main>
-      <section class="jogos" id="jogos">
-        <!-- Jogos serão carregados aqui por script.js -->
-      </section>
-    </main>
+    <section id="jogos" class="jogos-container">
+      <!-- Jogos serão renderizados aqui -->
+    </section>
 
-    <!-- Boletim -->
-    <aside class="boletim" id="boletim">
+    <section id="boletim" class="boletim">
       <h2>Boletim de Aposta</h2>
       <div id="apostasSelecionadas"></div>
-
-      <div class="input-group">
-        <label for="valorAposta">Valor da aposta (R$):</label>
-        <input type="number" id="valorAposta" placeholder="0.00">
-      </div>
-
-      <div>
-        <p>Total de odds: <span id="totalOdds">0.00</span></p>
-        <p>Retorno potencial: <span id="retorno">R$ 0.00</span></p>
-      </div>
-
-      <button onclick="finalizarAposta()">Finalizar Aposta</button>
-    </aside>
-  </div>
-
-  <!-- Modal de pagamento -->
-  <div id="modalPagamento" class="modal">
-    <div class="modal-content">
-      <h3>Escolha a forma de pagamento</h3>
-      <button onclick="pagarPix()">💳 Pagar via Pix</button>
-      <button onclick="gerarCodigo()">💵 Gerar código para pagamento manual</button>
-      <button onclick="fecharModal()">Cancelar</button>
-    </div>
-  </div>
+      <div id="retornoTotal">Retorno: R$ 0,00</div>
+      <button id="finalizarBtn">Finalizar Aposta</button>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
