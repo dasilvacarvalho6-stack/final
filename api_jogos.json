@@ -1,18 +1,50 @@
 [
   {
     "id": 1,
-    "esporte": "Futebol",
-    "data": "2025-08-06",
+    "data": "2025-08-08",
+    "liga": "Campeonato Brasileiro",
     "timeA": "Flamengo",
-    "timeB": "Vasco",
-    "odds": [1.80, 3.20, 4.00]
+    "timeB": "Palmeiras",
+    "odds": [
+      { "nome": "1", "valor": 1.95 },
+      { "nome": "X", "valor": 3.40 },
+      { "nome": "2", "valor": 3.25 }
+    ]
   },
   {
     "id": 2,
-    "esporte": "Basquete",
-    "data": "2025-08-06",
-    "timeA": "Lakers",
-    "timeB": "Heat",
-    "odds": [1.60, 3.00, 2.50]
+    "data": "2025-08-08",
+    "liga": "Premier League",
+    "timeA": "Manchester City",
+    "timeB": "Arsenal",
+    "odds": [
+      { "nome": "1", "valor": 2.10 },
+      { "nome": "X", "valor": 3.50 },
+      { "nome": "2", "valor": 3.00 }
+    ]
+  },
+  {
+    "id": 3,
+    "data": "2025-08-09",
+    "liga": "La Liga",
+    "timeA": "Real Madrid",
+    "timeB": "Barcelona",
+    "odds": [
+      { "nome": "1", "valor": 2.30 },
+      { "nome": "X", "valor": 3.60 },
+      { "nome": "2", "valor": 2.80 }
+    ]
+  },
+  {
+    "id": 4,
+    "data": "2025-08-10",
+    "liga": "Serie A",
+    "timeA": "Juventus",
+    "timeB": "Milan",
+    "odds": [
+      { "nome": "1", "valor": 2.20 },
+      { "nome": "X", "valor": 3.30 },
+      { "nome": "2", "valor": 3.10 }
+    ]
   }
 ]
