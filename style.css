@@ -1,179 +1,128 @@
-/* Reset básico */
-* {
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0e0e0e;
+  color: #ffffff;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #111;
-  color: #fff;
-  padding-bottom: 100px;
-}
-
-/* Cabeçalho */
 header {
-  background-color: #d80000;
-  padding: 20px;
+  background-color: #d60000;
+  padding: 15px 20px;
+  font-size: 20px;
+  font-weight: bold;
   text-align: center;
   color: white;
-  font-size: 2.5rem;
-  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
 
-/* Filtros */
-.filtros {
+.container {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 20px;
-  background-color: #1c1c1c;
-  padding: 15px 30px;
-  border-bottom: 1px solid #333;
-}
-
-.filtros label {
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.filtros input[type="date"],
-.filtros select {
-  padding: 8px 12px;
-  border: none;
-  border-radius: 5px;
-  background-color: #222;
-  color: #fff;
-}
-
-/* Painel lateral de filtros por dia e liga */
-.sidebar {
-  background-color: #111;
   padding: 20px;
 }
 
-.sidebar h2 {
+.sidebar {
+  width: 220px;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  margin-right: 20px;
+  height: fit-content;
+}
+
+.sidebar h3 {
+  margin-top: 0;
   font-size: 18px;
-  margin-bottom: 10px;
+  color: #ff4d4d;
+}
+
+.sidebar button {
+  display: block;
+  width: 100%;
+  margin: 5px 0;
+  background-color: #2a2a2a;
   color: #fff;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding-left: 10px;
-}
-
-.sidebar ul li {
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
   cursor: pointer;
-  padding: 6px 0;
-  font-size: 14px;
-  color: #aaa;
-  transition: color 0.2s ease;
+  transition: background-color 0.2s;
 }
 
-.sidebar ul li:hover {
-  color: #fff;
+.sidebar button:hover {
+  background-color: #3a3a3a;
 }
 
-/* Lista de jogos */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 #jogos {
-  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .jogo {
-  background-color: #1e1e1e;
-  border: 1px solid #2b2b2b;
+  background-color: #1c1c1c;
   border-radius: 10px;
-  margin-bottom: 20px;
-  padding: 15px 20px;
-}
-
-.jogo h3 {
-  font-size: 20px;
-  margin-bottom: 5px;
-  color: #fff;
-}
-
-.jogo p {
-  font-size: 14px;
-  color: #ccc;
-}
-
-.odds {
-  display: flex;
-  gap: 15px;
-  margin-top: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 .odd-btn {
-  background-color: #d80000;
+  background-color: #2d2d2d;
   color: #fff;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: bold;
+  margin: 5px;
+  padding: 8px 12px;
   border: none;
+  border-radius: 6px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 .odd-btn:hover {
-  background-color: #ff1a1a;
+  background-color: #d60000;
 }
 
-.odd-btn.selected {
-  background-color: #ff1a1a;
-  box-shadow: 0 0 0 2px #fff inset;
+.boletim {
+  margin-top: 30px;
+  background-color: #1c1c1c;
+  padding: 15px;
+  border-radius: 10px;
 }
 
-/* Boletim de aposta */
-#boletim {
-  background-color: #222;
-  padding: 20px 30px;
-  margin-top: 20px;
-  border-top: 2px solid #d80000;
-}
-
-#boletim h2 {
-  font-size: 20px;
-  margin-bottom: 15px;
-  color: #fff;
-}
-
-#boletim div {
-  margin-bottom: 10px;
-}
-
-#boletim p {
-  font-size: 14px;
-  color: #ddd;
-}
-
-/* Botões */
-#boletim button {
-  background-color: #d80000;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.2s;
+.boletim input[type="number"] {
+  width: 100%;
   margin-top: 10px;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
 }
 
-#boletim button:hover {
+#retorno {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #00e676;
+}
+
+#finalizar-aposta {
+  margin-top: 15px;
+  padding: 12px;
+  width: 100%;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #d60000;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  display: none;
+  transition: 0.3s;
+}
+
+#finalizar-aposta:hover {
   background-color: #ff1a1a;
-}
-
-/* Responsivo */
-@media (max-width: 768px) {
-  .filtros {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .odds {
-    flex-direction: column;
-  }
 }
